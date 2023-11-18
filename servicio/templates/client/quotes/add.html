@@ -1,0 +1,26 @@
+<!-- Modal -->
+<div class="modal fade" id="add_quote" tabindex="-1" aria-labelledby="add_quoteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="add_quoteLabel">Apartar Cita</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="{% url 'add_quote' %}" method="post">
+          {% csrf_token %}
+          <div class="modal-body">
+            <label for="date">Fecha</label>
+            <input type="datetime-local" class="form-control" name="date" id="date">
+            <label for="car">Auto</label>
+            {{form.car_id}}
+            <label for="observation">Observaciones</label>
+            <input type="text" class="form-control" name="observation" id="observation">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-success">Agregar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>

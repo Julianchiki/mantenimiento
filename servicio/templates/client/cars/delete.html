@@ -1,0 +1,24 @@
+<!-- Modal -->
+<div class="modal fade" id="delete_car{{ car.id }}" tabindex="-1" aria-labelledby="delete_car{{ car.id }}Label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="delete_carLabel">Eliminar Auto</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="{% url 'delete_car' %}" method="post">
+          {% csrf_token %}
+          <div class="modal-body">
+            {% if car %}
+            <input type="hidden" name="delete_car_id" value="{{ car.id }}">
+            {% endif %}
+            <p>¿Estas seguro de eliminar este auto?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

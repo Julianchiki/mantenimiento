@@ -1,0 +1,26 @@
+<!-- Modal -->
+<div class="modal fade" id="complete{{ q.id }}" tabindex="-1" aria-labelledby="complete{{ q.id }}Label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="completeLabel">Completar Trabajo</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="{% url 'complete' %}" method="post">
+          {% csrf_token %}
+          <div class="modal-body">
+            {% if q %}
+            <input type="hidden" name="quote_id" value="{{ q.id }}">
+            {% endif %}
+            <p>¿Completaste el trabajo de {{q.car.user.first_name}} {{q.car.user.last_name}}?</p>
+            <label for="observation">Observaciones</label>
+            <input type="text" class="form-control" name="observation">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-success">Completar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
